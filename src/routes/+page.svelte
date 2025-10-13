@@ -21,15 +21,24 @@
 			</button>
 		</div>
 	{:else}
+		Login with
 		<button
 			onclick={async () => {
-				alert('bla');
 				await authClient.signIn.social({
 					provider: 'github'
 				});
 			}}
 		>
-			Continue with GitHub
+			GitHub
+		</button>
+		<button
+			onclick={async () => {
+				await authClient.signIn.social({
+					provider: 'google'
+				});
+			}}
+		>
+			Google
 		</button>
 	{/if}
 </div>
