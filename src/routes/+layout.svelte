@@ -9,4 +9,13 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children?.()}
+<header class="flex items-center justify-between p-4">
+    <a href="/" class="text-lg font-bold">Home</a>
+    <nav>
+        <a href="/protected" class="text-lg">Protected</a>
+    </nav>
+</header>
+
+<main class="p-4">
+    {@render children?.()}
+</main>
