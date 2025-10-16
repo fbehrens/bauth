@@ -2,7 +2,7 @@
 	import { authClient } from '$lib/auth-client';
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-
+	
 	const session = authClient.useSession();
 	let { children } = $props();
 </script>
