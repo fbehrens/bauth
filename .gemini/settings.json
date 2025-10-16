@@ -1,7 +1,13 @@
 {
-  "mcpServers": {
-    "svelte": {
-      "httpUrl": "https://mcp.svelte.dev/mcp"
+    "context": {
+        "fileName": [
+            "GEMINI.md",
+            "GEMINI+.md"
+        ]
+    },
+    "mcpServers": {
+        "svelte": {
+            "httpUrl": "https://mcp.svelte.dev/mcp"
+        }
     }
-  }
 }
