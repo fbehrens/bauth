@@ -1,6 +1,8 @@
 node_modules
 /google
 GEMINI+.md
+static/_app
+static/_headers
 
 # Output
 .output
