@@ -12,6 +12,7 @@ GEMINI+.md
 
 # OS
 .DS_Store
+wrangler.toml
 Thumbs.db
 
 # Env

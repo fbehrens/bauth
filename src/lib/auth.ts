@@ -1,6 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { db } from './server/db';
+import { createDb } from './server/db';
 import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { getRequestEvent } from '$app/server';
 import {
@@ -9,10 +9,13 @@ import {
 	GOOGLE_CLIENT_ID,
 	GOOGLE_CLIENT_SECRET
 } from '$env/static/private';
+
 export const auth = betterAuth({
-	database: drizzleAdapter(db, {
-		provider: 'sqlite' // 'pg', "mysql"
-	}),
+	database: async () => {
+		const event = getRequestEvent();
+		const db = createDb(event.platform);
+		return drizzleAdapter(db, { provider: 'sqlite' });
+	},
 	socialProviders: {
 		github: {
 			clientId: GITHUB_CLIENT_ID,

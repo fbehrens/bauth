@@ -1,6 +1,14 @@
-import { drizzle } from 'drizzle-orm/libsql';
+import { drizzle } from 'drizzle-orm/d1';
 import * as schema from './schema';
+import { dev } from '$app/environment';
 import { DATABASE_URL } from '$env/static/private';
-if (!DATABASE_URL) throw new Error('DATABASE_URL is not set');
 
-export const db = drizzle(DATABASE_URL, { schema });
+export const tables = schema;
+
+export const createDb = (platform: App.Platform) => {
+	const db = dev
+		? drizzle(DATABASE_URL, { schema })
+		: drizzle(platform.env.DB, { schema });
+
+	return db;
+};
