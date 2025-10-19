@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { authClient } from '$lib/auth-client';
-	const session = authClient.useSession();
+	let { data } = $props();
+	let { userCount } = data;
 </script>
 
-
+userCount={userCount}
