@@ -9,6 +9,7 @@
 pnpm wrangler d1 create bauth-db
 pnpm db:push
 
+wrangler types
 pnpm build
 wrangler deploy
 

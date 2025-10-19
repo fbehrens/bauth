@@ -1,10 +1,10 @@
 import { svelteKitHandler } from 'better-auth/svelte-kit';
 import { building } from '$app/environment';
 import { betterAuth } from 'better-auth';
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { createDb } from '$lib/server/db';
 import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { getRequestEvent } from '$app/server';
+import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import {
 	GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET,
@@ -13,12 +13,9 @@ import {
 } from '$env/static/private';
 
 export async function handle({ event, resolve }) {
+	const db = createDb(event.platform!);
 	const auth = betterAuth({
-		database: async () => {
-			const event = getRequestEvent();
-			const db = createDb(event.platform!);
-			return drizzleAdapter(db, { provider: 'sqlite' });
-		},
+		database: drizzleAdapter(db, { provider: 'sqlite' }),
 		socialProviders: {
 			github: {
 				clientId: GITHUB_CLIENT_ID,
