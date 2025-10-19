@@ -10,7 +10,7 @@ pnpm wrangler d1 create bauth-db
 pnpm db:push
 
 pnpm build
-pnpm wrangler deploy
+wrangler deploy
 
 
 # 500 internal error
